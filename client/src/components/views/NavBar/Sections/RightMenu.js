@@ -16,7 +16,7 @@ function RightMenu(props) {
   const user = useSelector((state) => state.user);
 
   const logoutHandler = () => {
-    axios.get(`${USER_SERVER}/logout`).then((response) => {
+    axios.post(`${USER_SERVER}/logout`).then((response) => {
       if (response.status === 200) {
         dispatch(logoutUser()).then((response) => {
           window.localStorage.setItem("userId", undefined);

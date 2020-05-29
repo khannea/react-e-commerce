@@ -2,29 +2,27 @@ const { User } = require("../models/User");
 
 let auth = (req, res, next) => {
   let token =
-    req.body.w_auth ||
-    req.query.w_auth ||
-    req.headers["x-access-w_auth"] ||
-    req.cookies.w_auth;
-  //let token = req.cookies.w_auth;
-  console.log(token);
+    req.body.webAuth ||
+    req.query.webAuth ||
+    req.headers["x-access-webAuth"] ||
+    req.cookies.webAuth;
   User.findByToken(token, (err, user) => {
     if (err) throw err;
-    if (token === undefined) {
+    else if (token === undefined) {
       return res.json({
         isAuth: false,
-        error: "No token found",
+        error: "No token found yoyo",
       });
-    }
-    if (!user)
+    } else if (!user)
       return res.json({
         isAuth: false,
         error: "User not found",
       });
-
-    req.token = token;
-    req.user = user;
-    next();
+    else {
+      req.token = token;
+      req.user = user;
+      next();
+    }
   });
 };
 

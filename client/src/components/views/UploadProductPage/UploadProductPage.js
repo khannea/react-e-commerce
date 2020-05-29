@@ -9,12 +9,13 @@ import {
 } from "@material-ui/core";
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
+import continents from "../LandingPage/Sections/Data";
 
 function UploadProductPage(props) {
   const [TitleValue, setTitleValue] = useState("");
   const [DescriptionValue, setDescriptionValue] = useState("");
   const [PriceValue, setPriceValue] = useState("");
-  const [CountryValue, setCountryValue] = useState("France");
+  const [ContinentValue, setContinentValue] = useState("France");
   const [Images, setImages] = useState([]);
 
   const onTitleChange = (event) => {
@@ -29,8 +30,8 @@ function UploadProductPage(props) {
     setPriceValue(event.currentTarget.value);
   };
 
-  const onCountrysSelectChange = (event) => {
-    setCountryValue(event.currentTarget.value);
+  const onContinentsSelectChange = (event) => {
+    setContinentValue(event.currentTarget.value);
   };
 
   const updateImages = (newImages) => {
@@ -47,7 +48,7 @@ function UploadProductPage(props) {
       !DescriptionValue ||
       !PriceValue ||
       !Images ||
-      !CountryValue
+      !ContinentValue
     ) {
       alert("First complete all fields!");
     } else {
@@ -57,7 +58,7 @@ function UploadProductPage(props) {
         description: DescriptionValue,
         price: PriceValue,
         images: Images,
-        country: CountryValue,
+        continent: ContinentValue,
       };
 
       Axios.post("/api/product/uploadProduct", variables).then((response) => {
@@ -69,61 +70,6 @@ function UploadProductPage(props) {
       });
     }
   };
-
-  const countries = [
-    {
-      key: 1,
-      value: "Allemagne",
-    },
-    {
-      key: 2,
-      value: "France",
-    },
-    {
-      key: 3,
-      value: "Espagne",
-    },
-    {
-      key: 4,
-      value: "Chine",
-    },
-    {
-      key: 5,
-      value: "Indonesie",
-    },
-    {
-      key: 6,
-      value: "Japon",
-    },
-    {
-      key: 7,
-      value: "Brésil",
-    },
-    {
-      key: 8,
-      value: "USA",
-    },
-    {
-      key: 9,
-      value: "Kenya",
-    },
-    {
-      key: 10,
-      value: "Canada",
-    },
-    {
-      key: 11,
-      value: "Finland",
-    },
-    {
-      key: 12,
-      value: "Madagascar",
-    },
-    {
-      key: 13,
-      value: "Iran",
-    },
-  ];
 
   return (
     <Container>
@@ -169,16 +115,16 @@ function UploadProductPage(props) {
             <TextField
               id="standard-select-currency-native"
               select
-              label="Pays"
+              label="Région"
               defaultValue="France"
-              onChange={onCountrysSelectChange}
+              onChange={onContinentsSelectChange}
               SelectProps={{
                 native: true,
               }}
             >
-              {countries.map((option) => (
-                <option key={option.key} value={option.value}>
-                  {option.value}
+              {continents.map((continent) => (
+                <option key={continent} value={continent}>
+                  {continent}
                 </option>
               ))}
             </TextField>

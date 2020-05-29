@@ -22,7 +22,7 @@ const productSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
-    country: {
+    continent: {
       type: String,
     },
     sold: {
@@ -45,7 +45,7 @@ productSchema.index(
   },
   {
     weights: {
-      name: 5,
+      title: 1,
       description: 1,
     },
   }

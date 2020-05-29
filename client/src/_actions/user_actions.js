@@ -26,7 +26,7 @@ export function loginUser(dataToSubmit) {
 
 export function auth() {
   const request = axios
-    .get(`${USER_SERVER}/auth`)
+    .post(`${USER_SERVER}/auth`)
     .then((response) => response.data);
   return {
     type: AUTH_USER,
@@ -35,8 +35,9 @@ export function auth() {
 }
 
 export function logoutUser() {
+  console.log("logout");
   const request = axios
-    .get(`${USER_SERVER}/logout`)
+    .post(`${USER_SERVER}/logout`)
     .then((response) => response.data);
 
   return {

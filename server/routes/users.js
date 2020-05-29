@@ -8,7 +8,7 @@ let { auth } = require("../middleware/auth");
 //             User
 //=================================
 
-router.get("/auth", auth, (req, res) => {
+router.post("/auth", auth, (req, res) => {
   return res.status(200).json({
     _id: req.user._id,
     isAdmin: req.user.role === 0 ? false : true,
@@ -46,9 +46,9 @@ router.post("/login", (req, res) => {
 
       user.generateToken((err, user) => {
         if (err) return res.status(400).send(err);
-        console.log("Login success!");
-        res.cookie("w_authExp", user.tokenExp);
-        res.cookie("w_auth", user.token).status(200).json({
+        // console.log("Login success!");
+        res.cookie("webAuthExp", user.tokenExp);
+        res.cookie("webAuth", user.token).status(200).json({
           loginSuccess: true,
           userId: user._id,
         });
@@ -57,9 +57,9 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/logout", auth, (req, res) => {
-  res.clearCookie("w_auth", { path: "/" });
-  res.clearCookie("w_authExp", { path: "/" });
+router.post("/logout", auth, (req, res) => {
+  res.clearCookie("webAuth", { path: "/" });
+  res.clearCookie("webAuthExp", { path: "/" });
   User.findOneAndUpdate(
     { _id: req.user._id },
     { token: "", tokenExp: "" },

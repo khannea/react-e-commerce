@@ -5,10 +5,12 @@ import Auth from "../hoc/auth";
 import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
+import ProductPage from "./views/ProductPage/ProductPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import theme from "./theme";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -17,10 +19,11 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <Suspense fallback={<div>Loading...</div>}>
+        <CssBaseline />
         <NavBar />
-        <div style={{ paddingTop: "69px" }}>
+        <div style={{ paddingTop: "69px", height: "100%" }}>
           <Switch>
-            <Route exact path="/" component={Auth(LandingPage, true)} />
+            <Route exact path="/" component={Auth(LandingPage, false)} />
             <Route exact path="/login" component={Auth(LoginPage, false)} />
             <Route
               exact
@@ -31,6 +34,11 @@ function App() {
               exact
               path="/product/upload"
               component={Auth(UploadProductPage, true)}
+            />
+            <Route
+              exact
+              path="/product/view/:id"
+              component={Auth(ProductPage, false)}
             />
           </Switch>
         </div>
