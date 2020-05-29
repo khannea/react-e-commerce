@@ -57,6 +57,7 @@ router.post("/getProduct", (req, res) => {
 });
 
 router.post("/getProducts", (req, res) => {
+  console.log("get products");
   let order = req.body.order ? req.body.order : "desc";
   let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
   let limit = req.body.limit ? req.body.limit : 100;
