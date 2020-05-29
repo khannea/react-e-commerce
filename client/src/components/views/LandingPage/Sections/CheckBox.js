@@ -24,6 +24,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 function CheckBox(props) {
+  console.log("Landing");
   const classes = useStyles();
   const [Checked, setChecked] = useState([]);
   const [hidden, sethidden] = useState(true);
