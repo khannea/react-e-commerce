@@ -15,12 +15,11 @@ function ImageSlider({ images, showThumbs }) {
       showStatus={false}
       emulateTouch
       showThumbs={showThumbs}
-      style={{ textAlign: "center" }}
     >
       {images.map((image, index) => {
         return (
           <img
-            src={`http://localhost:5000/${image}`}
+            src={`/api/${image}`}
             style={{
               height: "100%",
             }}

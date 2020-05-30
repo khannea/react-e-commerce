@@ -12,7 +12,6 @@ function FileUpload(props) {
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
-    //save the Image we chose inside the Node Server
     Axios.post("/api/product/uploadImage", formData, config).then(
       (response) => {
         if (response.data.success) {
@@ -50,8 +49,6 @@ function FileUpload(props) {
             }}
             {...getRootProps()}
           >
-            {/* {console.log("getRootProps", { ...getRootProps() })}
-            {console.log("getInputProps", { ...getInputProps() })} */}
             <input {...getInputProps()} />
             <AddIcon />
           </div>
@@ -70,7 +67,7 @@ function FileUpload(props) {
           <div key={index} onClick={() => onDelete(image)}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`http://localhost:5000/${image}`}
+              src={`/api/${image}`}
               alt={`productImg-${index}`}
             />
           </div>
