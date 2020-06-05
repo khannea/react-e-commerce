@@ -18,11 +18,6 @@ function LeftMenu(props) {
             <Typography variant="h5">Logo</Typography>
           </Button>
         </Grid>
-        <Grid item>
-          <Button component={Link} to="/home">
-            <Typography variant="h5">Home</Typography>
-          </Button>
-        </Grid>
       </Grid>
     </>
   );

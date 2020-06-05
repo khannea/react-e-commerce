@@ -6,6 +6,8 @@ import LandingPage from "./views/LandingPage/LandingPage.js";
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import ProductPage from "./views/ProductPage/ProductPage.js";
+import CartPage from "./views/CartPage/CartPage.js";
+import HistoryPage from "./views/HistoryPage/HistoryPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
 import { MuiThemeProvider } from "@material-ui/core/styles";
@@ -40,6 +42,8 @@ function App() {
               path="/product/view/:id"
               component={Auth(ProductPage, false)}
             />
+            <Route exact path="/user/cart" component={Auth(CartPage, true)} />
+            <Route exact path="/history" component={Auth(HistoryPage, true)} />
           </Switch>
         </div>
       </Suspense>

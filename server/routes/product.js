@@ -49,6 +49,26 @@ router.post("/uploadProduct", auth, (req, res) => {
   });
 });
 
+router.get("/products_by_id", (req, res) => {
+  let type = req.query.type;
+  let productId = req.query.id;
+
+  if (type == "array") {
+    let ids = req.query.id.split(",");
+    productsId = [];
+    productId = ids.map((item) => {
+      return item;
+    });
+  }
+
+  Product.find({ _id: { $in: productId } })
+    .populate("writer")
+    .exec((err, product) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).json(product);
+    });
+});
+
 router.post("/getProduct", (req, res) => {
   Product.find({ _id: req.body.id }).exec((err, product) => {
     if (err) return res.status(400).json({ success: false, err });
@@ -68,13 +88,22 @@ router.post("/getProducts", (req, res) => {
   for (let key in req.body.filters) {
     if (req.body.filters[key].length > 0) {
       if (key === "price") {
-        if (parseInt(req.body.filters[key][0]) > 0) {
+        if (
+          parseInt(req.body.filters[key][0]) > 0 &&
+          parseInt(req.body.filters[key][1]) > 0
+        ) {
+          findArgs[key] = {
+            $gte: req.body.filters[key][0],
+            $lte: req.body.filters[key][1],
+          };
+        } else if (parseInt(req.body.filters[key][0]) > 0) {
           findArgs[key] = {
             $gte: req.body.filters[key][0],
           };
-        }
-        if (parseInt(req.body.filters[key][1]) > 0) {
-          findArgs[key] = { $lte: req.body.filters[key][1] };
+        } else if (parseInt(req.body.filters[key][1]) > 0) {
+          findArgs[key] = {
+            $lte: req.body.filters[key][1],
+          };
         }
       } else {
         findArgs[key] = req.body.filters[key];

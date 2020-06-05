@@ -10,6 +10,8 @@ import { useDispatch } from "react-redux";
 import { logoutUser } from "../../../../_actions/user_actions";
 import PublishIcon from "@material-ui/icons/Publish";
 import IconButton from "@material-ui/core/IconButton";
+import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
+import Badge from "@material-ui/core/Badge";
 
 function RightMenu(props) {
   const dispatch = useDispatch();
@@ -34,18 +36,26 @@ function RightMenu(props) {
     <>
       {user.userData && user.userData.isAuth && (
         <>
-          <Grid
-            item
-            container
-            alignContent="space-between"
-            alignItems="center"
-            direction="row"
-            spacing={2}
-          >
+          <Grid item container alignItems="center">
             <Grid item>
               <IconButton component={Link} to="/product/upload">
                 <PublishIcon fontSize="large" />
               </IconButton>
+            </Grid>
+            <Grid item>
+              <Button component={Link} to="/user/cart">
+                <Badge
+                  badgeContent={user.userData && user.userData.cart.length}
+                  color="error"
+                >
+                  <ShoppingCartOutlinedIcon fontSize="large" />
+                </Badge>
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button component={Link} to="/history">
+                <Typography variant="h5">History</Typography>
+              </Button>
             </Grid>
             <Grid item>
               <Button onClick={logoutHandler}>

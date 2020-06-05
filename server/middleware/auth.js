@@ -11,7 +11,7 @@ let auth = (req, res, next) => {
     else if (token === undefined) {
       return res.json({
         isAuth: false,
-        error: "No token found yoyo",
+        error: "No token found",
       });
     } else if (!user)
       return res.json({

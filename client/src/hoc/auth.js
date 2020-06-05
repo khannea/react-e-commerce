@@ -29,7 +29,8 @@ export default function (SpecificComponent, option, adminRoute = null) {
           setRedirect(true);
           setLoading(false);
         });
-    }, [setRedirect, setLoading]);
+    }, []);
+    //    }, [setRedirect, setLoading]);
 
     if (option) {
       if (loading) {
