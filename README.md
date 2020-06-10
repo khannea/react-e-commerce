@@ -1,4 +1,5 @@
-# Mern Boilerplate
+# Site e-commerce
 
 
-![Alt text](mern-boilerplate-screenshot1.png?raw=true "mern-boilerplate")
+![Landing page](ecommerce-landingpage.png?raw=true "Landing page")
+![Detail page](ecommerce-detail.png?raw=true "Detail page")
