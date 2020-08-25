@@ -7,7 +7,6 @@ import { onSuccessBuy } from "../../../_actions/user_actions";
 import { Box, Typography } from "@material-ui/core";
 import UserCardBlock from "./Sections/UserCardBlock";
 import Paypal from "../../utils/Paypal";
-import Axios from "axios";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 const useStyles = makeStyles({

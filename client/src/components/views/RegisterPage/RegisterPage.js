@@ -70,15 +70,14 @@ function RegisterPage(props) {
               <Box p={10}>
                 <form style={{ minWidth: "375px" }} onSubmit={handleSubmit}>
                   <Grid container direction="column" spacing={3}>
-                    <Grid item xs={12}>
+                    <Grid item>
                       <Typography variant="h2">Sign up</Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
                         id="name"
-                        placeholder="Enter your name."
                         label="Name"
                         type="text"
                         value={values.name}
@@ -95,13 +94,12 @@ function RegisterPage(props) {
                         <div className="input-feedback">{errors.name}</div>
                       )}
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item>
                       <TextField
                         fullWidth
                         variant="outlined"
                         id="lastName"
                         label="Lastame"
-                        placeholder="Enter your Last Name."
                         type="text"
                         value={values.lastName}
                         onChange={handleChange}
@@ -123,7 +121,6 @@ function RegisterPage(props) {
                         variant="outlined"
                         id="email"
                         label="Email"
-                        placeholder="Enter your Email."
                         type="email"
                         value={values.email}
                         onChange={handleChange}
@@ -144,7 +141,6 @@ function RegisterPage(props) {
                         fullWidth
                         variant="outlined"
                         id="password"
-                        placeholder="Enter your password, at least 6 characters."
                         label="Password"
                         type="password"
                         value={values.password}
@@ -166,7 +162,6 @@ function RegisterPage(props) {
                         fullWidth
                         variant="outlined"
                         id="confirmPassword"
-                        placeholder="Confirm your password."
                         type="password"
                         value={values.confirmPassword}
                         onChange={handleChange}

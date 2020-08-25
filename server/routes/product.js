@@ -69,12 +69,12 @@ router.get("/products_by_id", (req, res) => {
     });
 });
 
-router.post("/getProduct", (req, res) => {
-  Product.find({ _id: req.body.id }).exec((err, product) => {
-    if (err) return res.status(400).json({ success: false, err });
-    res.status(200).json({ success: true, product });
-  });
-});
+// router.post("/getProduct", (req, res) => {
+//   Product.find({ _id: req.body.id }).exec((err, product) => {
+//     if (err) return res.status(400).json({ success: false, err });
+//     res.status(200).json({ success: true, product });
+//   });
+// });
 
 router.post("/getProducts", (req, res) => {
   let order = req.body.order ? req.body.order : "desc";
