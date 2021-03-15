@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 import AddIcon from "@material-ui/icons/Add";
 import Axios from "axios";
+import { USER_SERVER } from "../Config.js";
 
 function FileUpload(props) {
   const [Images, setImages] = useState([]);
@@ -12,7 +13,7 @@ function FileUpload(props) {
       header: { "content-type": "multipart/form-data" },
     };
     formData.append("file", files[0]);
-    Axios.post("/api/product/uploadImage", formData, config).then(
+    Axios.post(`${USER_SERVER}product/uploadImage`, formData, config).then(
       (response) => {
         if (response.data.success) {
           setImages([...Images, response.data.image]);
@@ -67,7 +68,7 @@ function FileUpload(props) {
           <div key={index} onClick={() => onDelete(image)}>
             <img
               style={{ minWidth: "300px", width: "300px", height: "240px" }}
-              src={`/api/${image}`}
+              src={`/ecommerce/${image}`}
               alt={`productImg-${index}`}
             />
           </div>

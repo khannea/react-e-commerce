@@ -3,6 +3,7 @@ import { Box } from "@material-ui/core";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./ImageSlider.css";
+import { USER_SERVER } from "../Config.js";
 
 function ImageSlider({ images, showThumbs }) {
   return (
@@ -19,7 +20,7 @@ function ImageSlider({ images, showThumbs }) {
       {images.map((image, index) => {
         return (
           <img
-            src={`/api/${image}`}
+            src={`/ecommerce/${image}`}
             style={{
               height: "100%",
             }}

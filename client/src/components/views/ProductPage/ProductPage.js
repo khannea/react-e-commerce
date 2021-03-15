@@ -6,6 +6,7 @@ import ImageSlider from "../../utils/ImageSlider";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import { addToCart } from "../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
+import { USER_SERVER } from "../../Config.js";
 
 const useStyles = makeStyles(() => ({
   roundButton: {
@@ -34,7 +35,7 @@ function ProductPage(props) {
   };
 
   const getProduct = () => {
-    Axios.get(`/api/product/products_by_id?id=${id}&type=single`).then(
+    Axios.get(`${USER_SERVER}product/products_by_id?id=${id}&type=single`).then(
       (response) => {
         setProduct(response.data[0]);
       }

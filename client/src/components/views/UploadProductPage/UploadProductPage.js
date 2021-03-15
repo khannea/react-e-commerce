@@ -10,6 +10,7 @@ import {
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
 import continents from "../LandingPage/Sections/Data";
+import { USER_SERVER } from "../../Config.js";
 
 function UploadProductPage(props) {
   const [TitleValue, setTitleValue] = useState("");
@@ -61,7 +62,7 @@ function UploadProductPage(props) {
         continent: ContinentValue,
       };
 
-      Axios.post("/api/product/uploadProduct", variables).then((response) => {
+      Axios.post(`${USER_SERVER}product/uploadProduct`, variables).then((response) => {
         if (response.data.success) {
           alert("Product successfullt uploaded");
         } else {

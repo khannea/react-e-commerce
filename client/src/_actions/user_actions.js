@@ -13,7 +13,7 @@ import { USER_SERVER } from "../components/Config.js";
 
 export function registerUser(dataToSubmit) {
   const request = axios
-    .post(`${USER_SERVER}/register`, dataToSubmit)
+    .post(`${USER_SERVER}users/register`, dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -24,7 +24,7 @@ export function registerUser(dataToSubmit) {
 
 export function loginUser(dataToSubmit) {
   const request = axios
-    .post(`${USER_SERVER}/login`, dataToSubmit)
+    .post(`${USER_SERVER}users/login`, dataToSubmit)
     .then((response) => response.data);
 
   return {
@@ -35,7 +35,7 @@ export function loginUser(dataToSubmit) {
 
 export function auth() {
   const request = axios
-    .post(`${USER_SERVER}/auth`)
+    .post(`${USER_SERVER}users/auth`)
     .then((response) => response.data);
   return {
     type: AUTH_USER,
@@ -45,7 +45,7 @@ export function auth() {
 
 export function logoutUser() {
   const request = axios
-    .post(`${USER_SERVER}/logout`)
+    .post(`${USER_SERVER}users/logout`)
     .then((response) => response.data);
 
   return {
@@ -56,7 +56,7 @@ export function logoutUser() {
 
 export function addToCart(_id) {
   const request = axios
-    .post(`${USER_SERVER}/addToCart?productId=${_id}`)
+    .post(`${USER_SERVER}users/addToCart?productId=${_id}`)
     .then((response) => response.data);
 
   return {
@@ -67,7 +67,7 @@ export function addToCart(_id) {
 
 export function getCartItems(cartItems, userCart) {
   const request = axios
-    .get(`/api/product/products_by_id?id=${cartItems}&type=array`)
+    .get(`${USER_SERVER}product/products_by_id?id=${cartItems}&type=array`)
     .then((response) => {
       //Make CartDetail inside redux store
       //we need to add the quantity
@@ -89,7 +89,7 @@ export function getCartItems(cartItems, userCart) {
 
 export function removeCartItem(id) {
   const request = axios
-    .get(`/api/users/removeFromCart?_id=${id}`)
+    .get(`${USER_SERVER}users/removeFromCart?_id=${id}`)
     .then((response) => {
       response.data.cart.forEach((item) => {
         response.data.cartDetail.forEach((k, i) => {
@@ -109,7 +109,7 @@ export function removeCartItem(id) {
 
 export function onSuccessBuy(data) {
   const request = axios
-    .post(`${USER_SERVER}/successBuy`, data)
+    .post(`${USER_SERVER}users/successBuy`, data)
     .then((response) => response.data);
 
   return {

@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { Box, Typography, Button } from "@material-ui/core";
+import { USER_SERVER } from "../../../Config.js";
 
 const useStyles = makeStyles({
   table: {
@@ -41,7 +42,7 @@ function UserCardBlock(props) {
           <Box className={classes.minitaureConteneur}>
             <img
               className={classes.minitaure}
-              src={`/api/${product.images[0]}`}
+              src={`${USER_SERVER}${product.images[0]}`}
               alt="product"
             />
           </Box>

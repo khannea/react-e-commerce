@@ -10,6 +10,7 @@ import PriceBox from "./Sections/PriceBox";
 import continents from "../LandingPage/Sections/Data";
 import SearchBar from "./Sections/SearchBar";
 import { Link } from "react-router-dom";
+import { USER_SERVER } from "../../Config.js";
 
 const useStyles = makeStyles(() => ({
   cardContainer: {
@@ -31,7 +32,7 @@ function LandingPage() {
   const [SearchTerms, setSearchTerms] = useState("");
 
   const getProducts = (variables) => {
-    Axios.post("/api/product/getProducts", variables).then((response) => {
+    Axios.post(`${USER_SERVER}product/getProducts`, variables).then((response) => {
       if (response.data.success) {
         if (variables.loadMore) {
           setProducts(Products.concat(response.data.products));

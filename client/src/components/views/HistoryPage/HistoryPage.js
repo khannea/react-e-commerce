@@ -9,6 +9,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import { Box, Typography, Button } from "@material-ui/core";
 import Axios from "axios";
+import { USER_SERVER } from "../../Config.js";
 
 const useStyles = makeStyles({
   table: {
@@ -21,7 +22,7 @@ function HistoryPage() {
   const [History, setHistory] = useState([]);
 
   useEffect(() => {
-    Axios.get("api/users/getHistory").then((response) => {
+    Axios.get(`${USER_SERVER}users/getHistory`).then((response) => {
       if (response.data.success) {
         setHistory(response.data.history);
       } else {
